@@ -42,6 +42,7 @@ public class SecurityConfig {
                         .requestMatchers("/admin-page").hasAuthority("ADMIN")
                         .requestMatchers("/user-page").hasAuthority("USER")
                         .requestMatchers("/register").permitAll()
+                        .requestMatchers("/upload").permitAll()
                         .anyRequest().authenticated()
                 )
                 .formLogin(form -> form

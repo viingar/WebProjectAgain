@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!-- Website - www.codingnepalweb.com -->
-<html lang="ru" dir="ltr">
+<html lang="ru" dir="ltr" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
   <meta charset="utf-8">
   <title>Works Page</title>
@@ -324,18 +324,23 @@
     </div>
     <div class="nav-menu" id="navMenu">
       <ul>
-        <li><a th:href="@{/home}"  class="link active">Home</a></li>
-        <li><a th:href="@{/works}"  class="link">Blog</a></li>
-        <li><a href="#" class="link">Services</a></li>
+        <li><a th:href="@{/home}"  class="link active">Главная</a></li>
+        <li><a th:href="@{/works}"  class="link">Последние работы</a></li>
+        <li><a th:href="@{/upload}" class="link">Загрузить</a></li>
         <li><a href="#" class="link">About</a></li>
       </ul>
     </div>
     <div class="nav-button">
       <a th:href="@{/login}">
-        <button class="btn white-btn">Sign In</button>
+        <button class="btn white-btn">Авторизация</button>
       </a>
       <a th:href="@{/register}">
-        <button class="btn" id="registerBtn" > Sign Up</button>
+        <button class="btn" id="registerBtn" >Регистрация</button>
+      </a>
+      <button class="btn white-btn" th:if="${user != null}" th:text="${user.fullname}"></button>
+      <button class="btn white-btn" th:if="${user == null}">Не авторизован</button>
+      <a th:href="@{/logout}" >
+        <button sec:authorize="isAuthenticated" class="btn" id="logoutBtn" >Выйти</button>
       </a>
     </div>
     <div class="nav-menu-btn">

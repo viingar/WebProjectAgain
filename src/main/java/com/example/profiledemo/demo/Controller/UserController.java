@@ -27,15 +27,26 @@ public class UserController {
     private UserService userService;
 
     @GetMapping("/home")
-    public String home() {
+    public String home(Model model, Principal principal) {
+        if (principal != null) {
+            UserDetails userDetails = userDetailsService.loadUserByUsername(principal.getName());
+            model.addAttribute("user", userDetails);
+        }
         return "home";
     }
-
     @GetMapping("/works")
-    public String works() {
+    public String works(Model model, Principal principal) {
+        if (principal != null) {
+            UserDetails userDetails = userDetailsService.loadUserByUsername(principal.getName());
+            model.addAttribute("user", userDetails);
+        }
+
         return "works";
     }
-
+    @GetMapping("/upload")
+    public String upload() {
+        return "upload";
+    }
     @GetMapping("/register")
     public String getRegistrationPage(@ModelAttribute("user") UserDTO userDto) {
         return "register";
