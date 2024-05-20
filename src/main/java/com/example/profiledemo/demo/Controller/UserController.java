@@ -1,8 +1,11 @@
 package com.example.profiledemo.demo.Controller;
 
 import com.example.profiledemo.demo.DTO.UserDTO;
+import com.example.profiledemo.demo.Service.CustomUserDetail;
 import com.example.profiledemo.demo.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Controller;
@@ -14,6 +17,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import java.security.Principal;
 
 @Controller
+@ComponentScan
 public class UserController {
 
     @Autowired
@@ -22,13 +26,22 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    @GetMapping("/home")
+    public String home() {
+        return "home";
+    }
 
-    @GetMapping("/registration")
+    @GetMapping("/works")
+    public String works() {
+        return "works";
+    }
+
+    @GetMapping("/register")
     public String getRegistrationPage(@ModelAttribute("user") UserDTO userDto) {
         return "register";
     }
 
-    @PostMapping("/registration")
+    @PostMapping("/register")
     public String saveUser(@ModelAttribute("user") UserDTO userDto, Model model) {
         userService.save(userDto);
         model.addAttribute("message", "Registered Successfuly!");

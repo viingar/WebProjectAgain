@@ -6,34 +6,201 @@
   <title>Login Form</title>
   <link rel="stylesheet" th:href="@{../css/styles.css}">
 </head>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+  *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+  }
+
+  body{
+    background-color: #0E0E2C;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    overflow: hidden;
+  }
+  h2{
+    color: #fff;
+    font-size: 30px;
+    text-align: center;
+    padding: 250px 0 30px 0;
+  }
+  .input-field{
+    font-size: 15px;
+    background: rgba(255, 255, 255, 0.2);
+    color: #fff;
+    height: 50px;
+    width: 26%;
+    padding: 0 10px 0 45px;
+    border: none;
+    border-radius: 30px;
+    outline: none;
+    transition: .2s ease;
+  }
+  input[type="submit"]{
+    font-size: 15px;
+    font-weight: 500;
+    color: black;
+    height: 45px;
+    width: 26%;
+    border: none;
+    border-radius: 30px;
+    outline: none;
+    background: rgba(255, 255, 255, 0.7);
+    cursor: pointer;
+    transition: .3s ease-in-out;
+  }
+  .message {
+    background-color: #45b6fe;
+    color: white;
+    padding: 10px;
+    margin-top: 20px;
+    border-radius: 5px;
+  }
+  .top span{
+    color: #fff;
+    font-size: small;
+    padding: 10px 0;
+    display: flex;
+    justify-content: center;
+  }
+  .top span a{
+    font-weight: 500;
+    color: #fff;
+    margin-left: 5px;
+  }
+  header{
+
+    text-align: center;
+    padding: 10px 0 30px 0;
+  }
+  .nav{
+    position: fixed;
+    top: 0;
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    height: 100px;
+    line-height: 100px;
+    background: linear-gradient rgba(39,39,39, 0.6);
+    z-index: 100;
+  }
+  .nav-logo p{
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+  }
+  .nav-menu ul{
+    display: flex;
+  }
+  .nav-menu ul li{
+    list-style-type: none;
+  }
+  .nav-menu ul li .link{
+    text-decoration: none;
+    font-weight: 500;
+    color: #fff;
+    padding-bottom: 15px;
+    margin: 0 25px;
+  }
+  .nav-button .btn{
+    width: 130px;
+    height: 40px;
+    font-weight: 500;
+    background: rgba(255, 255, 255, 0.4);
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: .3s ease;
+  }
+  .btn:hover{
+    background: rgba(255, 255, 255, 0.3);
+  }
+  #registerBtn{
+    margin-left: 15px;
+  }
+  .btn.white-btn{
+    background: rgba(255, 255, 255, 0.7);
+  }
+  .btn.btn.white-btn:hover{
+    background: rgba(255, 255, 255, 0.5);
+  }
+  .nav-menu-btn{
+    display: none;
+  }
+  .form-group{
+    position: relative;
+    top: -35px;
+    left: 17px;
+    color: #123;
+    transform: translate(37%, 33%);
+    margin: 25px;
+  }
+</style>
 <body>
+<header class="header">
+  <nav class="nav">
+    <div class="nav-logo">
+      <p>LOGO .</p>
+    </div>
+    <div class="nav-menu" id="navMenu">
+      <ul>
+        <li><a th:href="@{/home}"  class="link active">Home</a></li>
+        <li><a th:href="@{/works}"  class="link">Blog</a></li>
+        <li><a href="#" class="link">Services</a></li>
+        <li><a href="#" class="link">About</a></li>
+      </ul>
+    </div>
+    <div class="nav-button">
+      <a th:href="@{/login}">
+        <button class="btn white-btn">Sign In</button>
+      </a>
+      <a th:href="@{/register}">
+        <button class="btn" id="registerBtn" > Sign Up</button>
+      </a>
+    </div>
+    <div class="nav-menu-btn">
+      <i class="bx bx-menu" onclick="myMenuFunction()"></i>
+    </div>
+  </nav>
+</header>
+
+
+  <h2>Авторизируйтесь</h2>
+  <form
+          th:action="@{/login}"
+          method="post"
+  >
+
+
+    <div class="form-group">
+
+      <input  type="email" class="input-field" id="username"  name="username" placeholder="Электронная почта" required>
+    </div>
+
+    <div class="form-group">
+
+      <input  type="password" class="input-field" id="password" name="password" placeholder="Пароль" required>
+    </div>
+    <div class="form-group">
+    <input type="submit" value="Авторизироваться">
+    </div>
+
+  </form>
 <div class="container">
+  <div class="top">
+    <span>Нет аккаунта? <a th:href="@{/register}" onclick="register()">Зарегистрируйтесь</a></span>
+  </div>
   <div class="message" th:if="${param.error}">
     Invalid Username or Password
   </div>
   <div class="message" th:if="${param.logout}">
     Logout Successfuly
   </div>
-
-  <h2>Admin and User Login Page</h2>
-  <form
-          th:action="@{/login}"
-          method="post"
-
-  >
-
-
-    <div class="form-group">
-      <label for="username">Email:</label>
-      <input  type="email" id="username" name="username" placeholder="Enter your email" required>
-    </div>
-
-    <div class="form-group">
-      <label for="password">Password:</label>
-      <input  type="password" id="password" name="password" placeholder="Enter your password" required>
-    </div>
-    <input type="submit" value="Register">
-  </form>
 
 </div>
 </body>
