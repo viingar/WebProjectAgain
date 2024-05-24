@@ -140,6 +140,50 @@
     transform: translate(37%, 33%);
     margin: 25px;
   }
+  .btn-outline-secondary {
+    width: 130px;
+    height: 40px;
+    font-weight: 500;
+    background: rgba(255, 255, 255, 0.4);
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: .3s ease;
+    color: #fff;
+    font-size: 15px;
+    text-align: center;
+    position: absolute;
+    top: 52%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .input-group {
+    color: white;
+    font-size: 15px;
+    position: absolute;
+    top: 42%;
+    left: 50%;
+    transform: translate(-50%, -50%)
+  }
+  .form-control {
+    color: white;
+  }
+
+  .form-control-commentary{
+    position: absolute;
+    top: 65%;
+    left: 50%;
+    transform: translate(-50%, -50%)
+  }
+  .input-group-commentary {
+    position: absolute;
+    top: 46%;
+    left: 50%;
+    transform: translate(-50%, -50%)
+
+  }
+
+
 </style>
 <body>
 <header class="header">
@@ -173,14 +217,29 @@
     </div>
   </nav>
 </header>
-<form action="/upload" method="post" enctype="multipart/form-data">
-  <input type="file" name="image" accept="image/*">
-  <select name="category">
-    <option value="category1">Категория 1</option>
-    <option value="category2">Категория 2</option>
-    <option value="category3">Категория 3</option>
-    <option value="category4">Категория 4</option>
-  </select>
-  <button type="submit">Загрузить изображение</button>
-</form>
+<div class="my-5">
+  <div class="mx-auto w-25 " style="max-width:100%;">
+    <h2 class="text-center mb-3">Добавить изображение</h2>
+    <form th:action="@{/upload}" method="post" enctype="multipart/form-data">
+
+      <div class="input-group">
+        <input type="file" class="form-control" id="image" name="image" aria-describedby="inputGroupFileAddon04" aria-label="Upload" required="required">
+
+      </div>
+      <form th:action="@{/addComment}" method="post">
+        <!-- Добавляем поле для ввода комментария -->
+        <div class="input-group-commentary">
+          <input type="text" class="form-control-commentary" id="comment" name="comment" placeholder="Введите комментарий" required="required">
+        </div>
+
+      </form>
+      <div>
+        <button class="btn-outline-secondary" type="submit" >Подтвердить</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!--Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 </body>

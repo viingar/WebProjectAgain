@@ -314,7 +314,9 @@
       flex-direction: column;
       gap: 0;
     }
-
+   tr {
+     color: white;
+   }
   }
 </style>
 <header class="header">
@@ -348,8 +350,37 @@
     </div>
   </nav>
 </header>
-<div class="container">
-  <!-- Images Filter Buttons Section -->
+<div class="mt-5">
+  <h1 class="text-center">Список последних изображений</h1>
+  <div class="container">
+    <!--Add User Button-->
+    <table class="table border" >
+      <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Image</th>
+        <th scope="col">Created AT</th>
+
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="list : ${imageList}">
+        <td th:text="${list.id}"></td>
+        <td><img height="250px"  th:src="@{${'/display?id=' + list.id}}" alt=""></td>
+        <td th:text="${list.date}"></td>
+
+      </tr>
+
+      </tbody>
+    </table>
+
+  </div>
+</div>
+
+<!--Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+
+<!-- <div class="container">
   <div class="row mt-5" id="filter-buttons">
     <div class="col-12">
       <button class="btn mb-2 me-1 active" data-filter="all">Show all</button>
@@ -358,7 +389,7 @@
       <button class="btn mb-2 mx-1" data-filter="people">People</button>
     </div>
   </div>
-  <!-- Filterable Images / Cards Section -->
+
   <div class="row px-2 mt-4 gap-3" id="filterable-cards">
     <div class="card p-0" data-name="nature">
       <img src="/src/main/resources/images/worksimg/mountaun.jpg" alt="img">
@@ -444,8 +475,8 @@
         <p class="card-text">Lorem ipsum dolor..</p>
       </div>
     </div>
-
-
+  </div>
+  </div>
 </body>
 <script>
 
@@ -461,6 +492,6 @@
 
 </script>
 
-<script src="works.js"></script>
-
+<script src="works.js"></script> -->
+</body>
 </html>

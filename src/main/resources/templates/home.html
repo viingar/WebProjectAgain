@@ -3,7 +3,6 @@
 <head>
   <title>WebP</title>
   <meta charset="utf-8">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
 </head>
 <body>
 <style>
@@ -114,7 +113,7 @@
 
   .nav-menu ul li .link{
     text-decoration: none;
-    font-weight: 500;
+    font-weight: 550;
     color: #fff;
     padding-bottom: 15px;
     margin: 0 25px;
@@ -130,7 +129,7 @@
   .nav-button .btn{
     width: 130px;
     height: 40px;
-    font-weight: 500;
+    font-weight: 550;
     background: rgba(255, 255, 255, 0.4);
     border: none;
     border-radius: 30px;
@@ -686,7 +685,7 @@
   .product-avaliable__subject:before{
     content: "";
     position: absolute;
-    background: url('/src/main/resources/images/icons/check-mark-icon.png') center no-repeat;
+    background: url('/resources/static/check-mark-icon.png') center no-repeat;
     background-size: cover;
     width: 30px;
     height: 30px;
@@ -1957,7 +1956,7 @@
 <main class="main">
   <section class="power container">
     <div class="power__text-content">
-      <img class="power__cube" src="/src/main/resources/images/icons/cube-icon.svg" alt="Cube">
+      <img class="power__cube" th:src="@{/cube-icon.svg}" alt="Cube">
       <div class="power__text-content__inner">
         <div class="section-header section-power">
           <h1 class="section-header__subject power__subject">Попробуйте создать свое первое портфолио!</h1>
@@ -1965,22 +1964,24 @@
         </div>
         <p>Присоединяйтесь к нам и начните работу прямо сейчас!</p>
         <form class="power__forma forma" action="#" method="post">
-          <button class="forma__button buttontry" type="button" onclick="window.location.href='./regMain.html'">Попробовать</button>
+          <a th:href="@{/register}">
+          <button class="forma__button buttontry" type="button" >Попробовать</button>
+          </a>
         </form>
       </div>
     </div>
 
     <div class="power__pictures-wrapper">
-      <img class="power__illustration" src="/src/main/resources/images/illustration/mean-dark.png" alt="Photo of a man">
-      <img class="power__triangle" src="/src/main/resources/images/icons/triangle-icon.png" alt="Triangle">
-      <img class="power__cubeTwo" src="/src/main/resources/images/icons/cube-icon.svg" alt="Cube">
-    </div>
-    </div>
-  </section>
+         <img class="power__illustration" th:src="@{/mean-dark.png}" alt="Photo of a man">
+         <img class="power__triangle" th:src="@{/triangle-icon.png}" alt="Triangle">
+        <img class="power__cubeTwo" th:src="@{/cube-icon.svg}" alt="Cube">
+       </div>
+       </div>
+     </section>
 
-  <section class="build container">
-    <div class="build__pictures-wrapper">
-      <img class="build__pictures" src="/src/main/resources/images/illustration/phone-foto.png" alt="Phone illustration">
+     <section class="build container">
+       <div class="build__pictures-wrapper">
+     <img class="build__pictures" th:src="@{/phone-foto.png}" alt="Phone illustration">
     </div>
 
     <div class="build__content">
@@ -2011,42 +2012,41 @@
 
     <ul class="wedo__list">
       <li class="wedo__item">
-        <img class="wedo__icon" src="/src/main/resources/images/icons/grow-trafic-icon.png" width="73" height="66" alt="Grow your traffic">
-        <h3 class="wedo__item-subject">Увеличьте просмотры</h3>
-        <p class="wedo__suptitle">Мы всегда стараемся выкладывать новые работы в рекомендации</p>
-      </li>
+       <img class="wedo__icon" th:src="@{/grow-trafic-icon.png}" width="73" height="66" alt="Grow your traffic">
+      <h3 class="wedo__item-subject">Увеличьте просмотры</h3>
+      <p class="wedo__suptitle">Мы всегда стараемся выкладывать новые работы в рекомендации</p>
+    </li>
 
-      <li class="wedo__item">
-        <img class="wedo__icon" src="/src/main/resources/images/icons/content-icon.png" width="73" height="66" alt="Grow your traffic">
-        <h3 class="wedo__item-subject">Находите заказы</h3>
-        <p class="wedo__suptitle">На нашем сайте присутствуют различные компании, может именно у вас они возьмут следующий заказ</p>
-      </li>
+    <li class="wedo__item">
+       <img class="wedo__icon" th:src="@{/content-icon.png}" width="73" height="66" alt="Grow your traffic">
+       <h3 class="wedo__item-subject">Находите заказы</h3>
+       <p class="wedo__suptitle">На нашем сайте присутствуют различные компании, может именно у вас они возьмут следующий заказ</p>
+     </li>
 
-      <li class="wedo__item">
-        <img class="wedo__icon" src="/src/main/resources/images/icons/reporting-icon.png" width="73" height="66" alt="Grow your traffic">
-        <h3 class="wedo__item-subject">Аналитика</h3>
-        <p class="wedo__suptitle">Отслеживайте количество просмотров на вашем проекте</p>
-      </li>
+     <li class="wedo__item">
+       <img class="wedo__icon" th:src="@{/reporting-icon.png}" width="73" height="66" alt="Grow your traffic">
+      <h3 class="wedo__item-subject">Аналитика</h3>
+      <p class="wedo__suptitle">Отслеживайте количество просмотров на вашем проекте</p>
+    </li>
 
-      <li class="wedo__item">
-        <img class="wedo__icon" src="/src/main/resources/images/icons/better-icon.png" width="73" height="66" alt="Grow your traffic">
-        <h3 class="wedo__item-subject">Оригинальность</h3>
-        <p class="wedo__suptitle">Мы следим за тем, чтобы никто не присваивал себе чужой контент</p>
-      </li>
-    </ul>
-  </section>
+    <li class="wedo__item">
+       <img class="wedo__icon" th:src="@{/better-icon.png}" width="73" height="66" alt="Grow your traffic">
+       <h3 class="wedo__item-subject">Оригинальность</h3>
+       <p class="wedo__suptitle">Мы следим за тем, чтобы никто не присваивал себе чужой контент</p>
+     </li>
+   </ul>
+ </section>
 
-    <p>[[${user.getFullname()}]]</p>
 
-  <footer class="text-body-secondary py-5">
-    <div class="container">
-      <p class="float-end mb-1">
-        <a href="#">Вернуться наверх</a>
-      </p>
-      <p class="mb-1">Album example is © Bootstrap, but please download and customize it for yourself! New to Bootstrap?</p>
-    </div>
-  </footer>
-  <script src="perehod.js"></script>
-</main>
-</body>
-</html>
+
+ <footer class="text-body-secondary py-5">
+   <div class="container">
+     <p class="float-end mb-1">
+       <a href="#">Вернуться наверх</a>
+     </p>
+   </div>
+ </footer>
+ <script src="perehod.js"></script>
+ </main>
+ </body>
+ </html>
