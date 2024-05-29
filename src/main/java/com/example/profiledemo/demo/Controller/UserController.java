@@ -68,7 +68,8 @@ public class UserController {
         return new ModelAndView("upload");
     }
     @PostMapping("/upload")
-    public String addWorksPost(HttpServletRequest request, @RequestParam("image") MultipartFile file) throws IOException, SerialException, SQLException
+    public String addWorksPost(HttpServletRequest request, @RequestParam("image") MultipartFile file, @RequestParam("text") String text)
+            throws IOException, SerialException, SQLException
     {
         byte[] bytes = file.getBytes();
         Blob blob = new javax.sql.rowset.serial.SerialBlob(bytes);
