@@ -17,7 +17,16 @@ public class Image {
     private Blob image;
     private String text;
 
+    private String uploaderFullName;
+
     private Date date = new Date();
+    public String getUploaderFullName() {
+        return uploaderFullName;
+    }
+
+    public void setUploaderFullName(String uploaderFullName) {
+        this.uploaderFullName = uploaderFullName;
+    }
 
     public long getId() {
         return id;

@@ -11,6 +11,12 @@ public class CustomUserDetail implements UserDetails {
 
     private User user;
 
+
+    // Добавьте метод getFullName() для получения полного имени пользователя
+    public String getFullName() {
+        return user.getFullname();
+    }
+
     public CustomUserDetail(User user) {
         this.user = user;
     }

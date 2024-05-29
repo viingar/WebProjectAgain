@@ -11,4 +11,6 @@ public interface ImageService {
     public Image create(Image image);
     public List<Image> viewAll();
     public Image viewById(long id);
+
+
 }

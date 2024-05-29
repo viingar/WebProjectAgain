@@ -251,7 +251,8 @@
       <div th:each="list : ${imageList}">
         <div>
           <img class="photo" th:src="@{${'/display?id=' + list.id}}" alt="">
-          <!-- <span th:text="${list.date}"></span> -->
+          <span th:text="${list.text}"></span>
+          <span th:text="${list.uploaderFullName}"></span>
         </div>
       </div>
     </div>

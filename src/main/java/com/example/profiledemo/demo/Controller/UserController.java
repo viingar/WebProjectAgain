@@ -64,11 +64,15 @@ public class UserController {
     }
 
     @GetMapping("/upload")
-    public ModelAndView addWorks(){
+    public ModelAndView addWorks(Model model, Principal principal){
+        if (principal != null) {
+            UserDetails userDetails = userDetailsService.loadUserByUsername(principal.getName());
+            model.addAttribute("user", userDetails);
+        }
         return new ModelAndView("upload");
     }
     @PostMapping("/upload")
-    public String addWorksPost(HttpServletRequest request, @RequestParam("image") MultipartFile file, @RequestParam("text") String text)
+    public String addWorksPost(HttpServletRequest request, @RequestParam("image") MultipartFile file, @RequestParam("text") String text, Principal principal)
             throws IOException, SerialException, SQLException
     {
         byte[] bytes = file.getBytes();
@@ -76,8 +80,15 @@ public class UserController {
 
         Image image = new Image();
         image.setImage(blob);
+        image.setText(text);
+
+        UserDetails userDetails = userDetailsService.loadUserByUsername(principal.getName());
+        String fullName = ((CustomUserDetail) userDetails).getFullName(); // Получаем полное имя пользователя
+
+        image.setUploaderFullName(fullName);
+
         imageService.create(image);
-        return "redirect:/works";
+        return "redirect:/works" ;
     }
     @GetMapping("/display")
     public ResponseEntity<byte[]> displayImage(@RequestParam("id") long id) throws IOException, SQLException
@@ -109,6 +120,8 @@ public class UserController {
     public String userPage (Model model, Principal principal) {
         UserDetails userDetails = userDetailsService.loadUserByUsername(principal.getName());
         model.addAttribute("user", userDetails);
+
+
         return "user";
     }
 
