@@ -143,7 +143,7 @@
     margin-left: 15px;
   }
   .btn.white-btn{
-    background: rgba(255, 255, 255, 0.7);
+
   }
   .btn.btn.white-btn:hover{
     background: rgba(255, 255, 255, 0.5);
@@ -1941,8 +1941,8 @@
       <a th:href="@{/register}">
       <button class="btn" id="registerBtn" >Регистрация</button>
       </a>
-      <button class="btn white-btn" th:if="${user != null}" th:text="${user.fullname}"></button>
-      <button class="btn white-btn" th:if="${user == null}">Не авторизован</button>
+        <span class="btn white-btn" th:if="${user != null}" th:text="${user.fullname}"></span>
+        <span class="btn white-btn" th:if="${user == null}">Не авторизован</span>
       <a th:href="@{/logout}" >
         <button sec:authorize="isAuthenticated" class="btn" id="logoutBtn" >Выйти</button>
       </a>

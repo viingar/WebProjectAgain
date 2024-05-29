@@ -13,12 +13,12 @@
 </head>
 <body>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
   *{
     padding: 0;
     margin: 0;
     border: 0;
   }
+
   *,*:before,*:after{
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
@@ -47,6 +47,7 @@
   img{vertical-align: top;}
   h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
 
+
   body{
     color: #ffffff;
     background-color: #0E0E2C;
@@ -58,45 +59,6 @@
     display: block;
   }
 
-
-  #filter-buttons button {
-    border-radius: 3px;
-    background: #fff;
-    border-color: transparent;
-  }
-
-  #filter-buttons button:hover {
-    background: #ddd;
-  }
-
-  #filter-buttons button.active {
-    color: #fff;
-    background: #6c757d;
-  }
-
-  #filterable-cards .card {
-    width: 15rem;
-    position: relative;
-    margin-left: auto;
-    margin-right: auto;
-    overflow: hidden;
-    display: flex;
-  }
-
-  #filterable-cards .card img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
-
-  #filterable-cards .card.hide {
-    display: none;
-  }
-
-  .mt-5{
-    margin-top: 5rem !important;
-  }
   .nav{
     position: fixed;
     top: 0;
@@ -107,14 +69,6 @@
     line-height: 100px;
     background: linear-gradient rgba(39,39,39, 0.6);
     z-index: 100;
-  }
-  .nav-logo p{
-    color: white;
-    font-size: 16px;
-    font-weight: 600;
-  }
-  .nav-menu ul{
-    display: flex;
   }
   .nav-menu ul li{
     list-style-type: none;
@@ -154,32 +108,16 @@
   .nav-menu-btn{
     display: none;
   }
-  .form-box{
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 512px;
-    height: 420px;
-    overflow: hidden;
-    z-index: 2;
+  .nav-logo p{
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
   }
-  .login-container{
-    position: absolute;
-    left: 4px;
-    width: 500px;
+
+  .nav-menu ul{
     display: flex;
-    flex-direction: column;
-    transition: .5s ease-in-out;
   }
-  .register-container{
-    position: absolute;
-    right: -520px;
-    width: 500px;
-    display: flex;
-    flex-direction: column;
-    transition: .5s ease-in-out;
-  }
+
   .top span{
     color: #fff;
     font-size: small;
@@ -197,68 +135,32 @@
     text-align: center;
     padding: 10px 0 30px 0;
   }
-  .two-forms{
-    display: flex;
-    gap: 10px;
+
+  .mt-5{
+    margin-top: 10rem !important;
   }
-  .input-field{
-    font-size: 15px;
-    background: rgba(255, 255, 255, 0.2);
-    color: #fff;
-    height: 50px;
+  .text-center{
+    font-weight: bold;
+  }
+
+  .photos {
+    display: inline-flex;
+    justify-content: flex-start;
+    margin-top: 100px;
+    flex-wrap: wrap;
     width: 100%;
-    padding: 0 10px 0 45px;
-    border: none;
-    border-radius: 30px;
-    outline: none;
-    transition: .2s ease;
   }
-  .input-field:hover, .input-field:focus{
-    background: rgba(255, 255, 255, 0.25);
+
+  .photos > div {
+    margin-right: 50px; /* Устанавливаем отступ между изображениями */
+    width: 25%; /* Делаем каждый блок равным 25% ширины контейнера для отображения 4 изображений в ряду */
+    box-sizing: border-box; /* Учитываем padding и border в общей ширине блока */
   }
-  ::-webkit-input-placeholder{
-    color: #fff;
-  }
-  .input-box i{
-    position: relative;
-    top: -35px;
-    left: 17px;
-    color: #fff;
-  }
-  .submit{
-    font-size: 15px;
-    font-weight: 500;
-    color: black;
-    height: 45px;
-    width: 100%;
-    border: none;
-    border-radius: 30px;
-    outline: none;
-    background: rgba(255, 255, 255, 0.7);
-    cursor: pointer;
-    transition: .3s ease-in-out;
-  }
-  .submit:hover{
-    background: rgba(255, 255, 255, 0.5);
-    box-shadow: 1px 5px 7px 1px rgba(0, 0, 0, 0.2);
-  }
-  .two-col{
-    display: flex;
-    justify-content: space-between;
-    color: #fff;
-    font-size: small;
-    margin-top: 10px;
-  }
-  .two-col .one{
-    display: flex;
-    gap: 5px;
-  }
-  .two label a{
-    text-decoration: none;
-    color: #fff;
-  }
-  .two label a:hover{
-    text-decoration: underline;
+
+  .photo {
+    width: 100%; /* Занимаем 100% ширины блока, чтобы уместиться внутри блока */
+    height: auto;
+    padding-top: 25px;
   }
   @media only screen and (max-width: 787px){
     .nav-button{
@@ -299,26 +201,18 @@
 
   }
   @media only screen and (max-width: 540px) {
-    .wrapper{
-      min-height: 100vh;
-    }
-    .form-box{
-      width: 100%;
-      height: 500px;
-    }
-    .register-container, .login-container{
-      width: 100%;
-      padding: 0 20px;
-    }
-    .register-container .two-forms{
+
+    .register-container .two-forms {
       flex-direction: column;
       gap: 0;
     }
-   tr {
-     color: white;
-   }
+
+    tr {
+      color: white;
+    }
   }
 </style>
+
 <header class="header">
   <nav class="nav">
     <div class="nav-logo">
@@ -353,30 +247,16 @@
 <div class="mt-5">
   <h1 class="text-center">Список последних изображений</h1>
   <div class="container">
-    <!--Add User Button-->
-    <table class="table border" >
-      <thead>
-      <tr>
-        <th scope="col">ID</th>
-        <th scope="col">Image</th>
-        <th scope="col">Created AT</th>
-
-      </tr>
-      </thead>
-      <tbody>
-      <tr th:each="list : ${imageList}">
-        <td th:text="${list.id}"></td>
-        <td><img height="250px"  th:src="@{${'/display?id=' + list.id}}" alt=""></td>
-        <td th:text="${list.date}"></td>
-
-      </tr>
-
-      </tbody>
-    </table>
-
+    <div class="photos">
+      <div th:each="list : ${imageList}">
+        <div>
+          <img class="photo" th:src="@{${'/display?id=' + list.id}}" alt="">
+          <!-- <span th:text="${list.date}"></span> -->
+        </div>
+      </div>
+    </div>
   </div>
 </div>
-
 <!--Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 
