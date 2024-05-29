@@ -1942,7 +1942,7 @@
       <button class="btn" id="registerBtn" >Регистрация</button>
       </a>
         <span class="btn white-btn" th:if="${user != null}" th:text="${user.fullname}"></span>
-        <span class="btn white-btn" th:if="${user == null}">Не авторизован</span>
+        <span class="text" th:if="${user == null}">Не авторизован</span>
       <a th:href="@{/logout}" >
         <button sec:authorize="isAuthenticated" class="btn" id="logoutBtn" >Выйти</button>
       </a>

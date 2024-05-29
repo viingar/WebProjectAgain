@@ -9,6 +9,8 @@
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 
+
+
   *{
     margin: 0;
     padding: 0;
@@ -32,10 +34,11 @@
   .form-group{
     position: relative;
     top: -35px;
-    left: 17px;
+    margin: auto;
     color: #123;
     transform: translate(37%, 33%);
     margin: 25px;
+    
   }
   .input-field{
     font-size: 15px;
@@ -63,9 +66,8 @@
     transition: .3s ease-in-out;
   }
   header{
-
     text-align: center;
-    padding: 10px 0 30px 0;
+    padding: 10px 0 30px 0;;
   }
   .nav{
     position: fixed;
@@ -85,9 +87,11 @@
   }
   .nav-menu ul{
     display: flex;
+    margin-left: 230px;
   }
   .nav-menu ul li{
     list-style-type: none;
+    
   }
   .nav-menu ul li .link{
     text-decoration: none;
@@ -121,12 +125,24 @@
   .nav-menu-btn{
     display: none;
   }
+
+  .message {
+    background-color: #45b6fe;
+    color: white;
+    padding: 10px;
+    margin: 20px auto; /* добавляем автоматический отступ слева и справа */
+    border-radius: 30px;
+    max-width: 450px; /* ограничиваем максимальную ширину блока */
+    text-align: center; /* центрируем текст внутри блока */
+  }
+
 </style>
+
 <body>
 <header class="header">
   <nav class="nav">
     <div class="nav-logo">
-      <p>LOGO .</p>
+      <p>LOGO.</p>
     </div>
     <div class="nav-menu" id="navMenu">
       <ul>
@@ -170,13 +186,17 @@
 
       <input th:field="*{password}" type="password" class="input-field"  id="password" name="password" placeholder="Пароль" required>
     </div>
+
     <div class="form-group">
-    <input type="submit" value="Зарегистрироваться">
-    </div>
-  </form>
-  <div class="message"  th:if="${message != null}">
-    [[${message}]]
+      <input type="submit" value="Зарегистрироваться" onclick="submitRegistrationForm(event)">
   </div>
+  </form>
+  <div class="message" style="display: none;" th:style="${message != null} ? 'display: block;' : ''">
+    Регистрация прошла успешно!
+  </div> 
+  <!-- <div class="message" th:if="${message != null}">
+    Регистрация прошла успешно!
+  </div> -->
 
 </div>
 </body>
