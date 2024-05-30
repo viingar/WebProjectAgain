@@ -227,7 +227,6 @@
 </style>
 
 <body>
-<<<<<<< HEAD
   <header class="header">
     <nav class="nav">
       <div class="nav-logo">
@@ -238,7 +237,7 @@
           <li><a th:href="@{/home}" class="link active">Главная</a></li>
           <li><a th:href="@{/works}" class="link">Последние работы</a></li>
           <li><a th:href="@{/upload}" class="link">Загрузить</a></li>
-          <li><a href="#" class="link">About</a></li>
+          <li><a href="#" class="link">О нас</a></li>
         </ul>
       </div>
       <div class="nav-button">
@@ -255,35 +254,6 @@
     </nav>
   </header>
   <div class="container">
-=======
-<header class="header">
-  <nav class="nav">
-    <div class="nav-logo">
-      <p>LOGO.</p>
-    </div>
-    <div class="nav-menu" id="navMenu">
-      <ul>
-        <li><a th:href="@{/home}"  class="link active">Главная</a></li>
-        <li><a th:href="@{/works}"  class="link">Последние работы</a></li>
-        <li><a th:href="@{/upload}" class="link">Загрузить</a></li>
-        <li><a href="#" class="link">О нас</a></li>
-      </ul>
-    </div>
-    <div class="nav-button">
-      <a th:href="@{/login}">
-        <button class="btn white-btn">Авторизация</button>
-      </a>
-      <a th:href="@{/register}">
-        <button class="btn" id="registerBtn" >Регистрация</button>
-      </a>
-    </div>
-    <div class="nav-menu-btn">
-      <i class="bx bx-menu" onclick="myMenuFunction()"></i>
-    </div>
-  </nav>
-</header>
-<div class="container">
->>>>>>> a8ed966516b9d89c0bdab0e87ec79f7d8d7ba13f
 
     <h2>Регистрация</h2>
     <form th:action="@{/register}" method="post" role="form" th:object="${user}">

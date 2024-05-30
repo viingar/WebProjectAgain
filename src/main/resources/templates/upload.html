@@ -191,14 +191,6 @@
   label {
     color: #fff;
   }
-<<<<<<< HEAD
-=======
-  .logintext {
-    color: white;
-    margin: 15px 15px;
-  }
-</style>
->>>>>>> a8ed966516b9d89c0bdab0e87ec79f7d8d7ba13f
 
   @media only screen and (max-width: 1250px) {
     .nav-button {
@@ -289,12 +281,6 @@
 </style>
 <h2>Добавьте изображение</h2>
 <body>
-<<<<<<< HEAD
-  <header class="header">
-    <nav class="nav">
-      <div class="nav-logo">
-        <p>LOGO .</p>
-=======
 <header class="header">
   <nav class="nav">
     <div class="nav-logo">
@@ -326,52 +312,6 @@
     </div>
   </nav>
 </header>
-<div class="my-5">
-  <div class="mx-auto w-25 " style="max-width:100%;">
-    <h2 class="text-center mb-3">Добавить изображение</h2>
-    <form th:action="@{/upload}" method="post" enctype="multipart/form-data">
-      <div class="container">
-        <div class="input-group">
-          <label for="image" class="form-label">Выберите файл:</label>
-          <input type="file" class="form-control mt-2" id="image" name="image" aria-describedby="inputGroupFileAddon04"
-                 aria-label="Upload" required="required" accept="image/png, image/jpeg, image/jpg">
-        </div>
-        <div class="input-group mt-3">
-          <label for="text">Комментарий</label>
-          <div class="form-control-commentary-container">
-            <textarea class="form-control-commentary" id="text" name="text" placeholder="Введите комментарий" required></textarea>
-          </div>
-        </div>
-        <button class="btn-outline-secondary" type="submit">Подтвердить</button>
->>>>>>> a8ed966516b9d89c0bdab0e87ec79f7d8d7ba13f
-      </div>
-      <div class="nav-menu" id="navMenu">
-        <ul>
-          <li><a th:href="@{/home}" class="link active">Главная</a></li>
-          <li><a th:href="@{/works}" class="link">Последние работы</a></li>
-          <li><a th:href="@{/upload}" class="link">Загрузить</a></li>
-          <li><a href="#" class="link">About</a></li>
-        </ul>
-      </div>
-      <div class="nav-button">
-        <a th:href="@{/login}">
-          <button class="btn white-btn">Авторизация</button>
-        </a>
-        <a th:href="@{/register}">
-          <button class="btn" id="registerBtn">Регистрация</button>
-        </a>
-        <button class="btn white-btn" th:if="${user!= null}" th:text="${user.fullname}" title="User Profile"></button>
-        <span class="text" th:if="${user == null}">Не авторизован</span>
-        <a th:href="@{/logout}">
-          <button sec:authorize="isAuthenticated" class="btn" id="logoutBtn">Выйти</button>
-        </a>
-      </div>
-      <div class="nav-menu-btn">
-        <i class="bx bx-menu" onclick="myMenuFunction()"></i>
-      </div>
-    </nav>
-  </header>
-
   <div class="my-5">
     <div class="mx-auto w-25 " style="max-width:100%;">
       <form th:action="@{/upload}" method="post" enctype="multipart/form-data">
