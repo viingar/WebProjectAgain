@@ -64,15 +64,26 @@
 
   body{
     color: #ffffff;
-    background-color: #0E0E2C;
+    background-color: rgb(14, 14, 44);
     overflow-x: hidden;
 
     font-family: 'Poppins', sans-serif;
   }
+  body::-webkit-scrollbar {
+  width: 12px;               /* ширина scrollbar */
+}
+body::-webkit-scrollbar-track {
+  background: rgb(255, 190, 11);        /* цвет дорожки */
+}
+body::-webkit-scrollbar-thumb {
+  background-color: rgb(14, 14, 44);    /* цвет плашки */
+  border-radius: 20px;       /* закругления плашки */
+  border: 1px solid orange;  /* padding вокруг плашки */
+}
 
   .buttontry{
     padding: 14px 33px;
-    background-color: #FFBE0B;
+    background-color: rgb(255, 190, 11);
     border: 2px solid #FFBE0B;
     border-radius: 10px;
     color: #0E0E2C;
