@@ -26,4 +26,6 @@ public class ImageServiceImpl implements ImageService {
     public Image viewById(long id) {
         return imageRepository.findById(id).get();
     }
+
+
 }

@@ -99,36 +99,64 @@ body::-webkit-scrollbar-thumb {
     background: rgba(39, 39, 39, 0.4);
   }
   .nav{
-    position: fixed;
-    top: 0;
-    display: flex;
-    justify-content: space-around;
-    width: 100%;
-    height: 100px;
-    line-height: 100px;
-    overflow: hidden;
-    background: linear-gradient(rgba(39,39,39, 0.6), transparent);
-    z-index: 100;
-  }
-  .nav-logo p{
-    color: white;
-    font-size: 25px;
-    font-weight: 600;
-  }
-  .nav-menu ul{
-    display: flex;
+      position: fixed;
+      top: 0;
+      display: flex;
+      justify-content: space-around;
+      width: 100%;
+      height: 100px;
+      line-height: 100px;
+      background: linear-gradient rgba(39,39,39, 0.6);
+      z-index: 100;
   }
   .nav-menu ul li{
-    list-style-type: none;
+      list-style-type: none;
+  }
+  .nav-menu ul li .link{
+      text-decoration: none;
+      font-weight: 500;
+      color: #fff;
+      padding-bottom: 15px;
+      margin: 0 25px;
+  }
+  .link:hover, .active{
+      border-bottom: 2px solid #fff;
+  }
+  .nav-button .btn{
+      width: 130px;
+      height: 40px;
+      font-weight: 500;
+      background: rgba(255, 255, 255, 0.4);
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: .3s ease;
+  }
+  .btn:hover{
+      background: rgba(255, 255, 255, 0.3);
+  }
+  #registerBtn{
+      margin-left: 15px;
+  }
+  .btn.white-btn{
+      background: rgba(255, 255, 255, 0.7);
+  }
+  .btn.btn.white-btn:hover{
+      background: rgba(255, 255, 255, 0.5);
+  }
+  .nav-menu-btn{
+      display: none;
+  }
+  .nav-logo p{
+      color: white;
+      font-size: 16px;
+      font-weight: 600;
   }
 
-  .nav-menu ul li .link{
-    text-decoration: none;
-    font-weight: 550;
-    color: #fff;
-    padding-bottom: 15px;
-    margin: 0 25px;
+  .nav-menu ul{
+      display: flex;
   }
+
   @media (max-width:1200px){
     .nav-menu ul li .link{
       font-size: 12px;
@@ -154,7 +182,7 @@ body::-webkit-scrollbar-thumb {
     margin-left: 15px;
   }
   .btn.white-btn{
-
+      background: rgba(255, 255, 255, 0.7);
   }
   .btn.btn.white-btn:hover{
     background: rgba(255, 255, 255, 0.5);
@@ -169,6 +197,11 @@ body::-webkit-scrollbar-thumb {
     margin: 0 auto;
     padding: 0 15px;
     color: #ffffff;
+  }
+
+  .logintext {
+      color: white;
+      margin: 15px 15px;
   }
 
 
@@ -1087,6 +1120,7 @@ body::-webkit-scrollbar-thumb {
       font-size: 31px;
     }
 
+
     /*WeDo*/
     .wedo__item{
       width: 49%;
@@ -1942,7 +1976,7 @@ body::-webkit-scrollbar-thumb {
         <li><a th:href="@{/home}"  class="link active">Главная</a></li>
         <li><a th:href="@{/works}"  class="link">Последние работы</a></li>
         <li><a th:href="@{/upload}" class="link">Загрузить</a></li>
-        <li><a href="#" class="link">About</a></li>
+        <li><a href="#" class="link">О нас</a></li>
       </ul>
     </div>
     <div class="nav-button">
@@ -1952,7 +1986,7 @@ body::-webkit-scrollbar-thumb {
       <a th:href="@{/register}">
       <button class="btn" id="registerBtn" >Регистрация</button>
       </a>
-        <span class="btn white-btn" th:if="${user != null}" th:text="${user.fullname}"></span>
+        <span class="logintext" th:if="${user != null}" th:text="${user.fullname}"></span>
         <span class="text" th:if="${user == null}">Не авторизован</span>
       <a th:href="@{/logout}" >
         <button sec:authorize="isAuthenticated" class="btn" id="logoutBtn" >Выйти</button>

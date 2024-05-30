@@ -6,6 +6,7 @@ import com.example.profiledemo.demo.Service.CustomUserDetail;
 import com.example.profiledemo.demo.Service.ImageService;
 import com.example.profiledemo.demo.Service.UserService;
 import jakarta.servlet.http.HttpServletRequest;
+import net.coobird.thumbnailator.Thumbnails;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.http.MediaType;
@@ -23,7 +24,9 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.sql.rowset.serial.SerialException;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.security.Principal;
 import java.sql.Blob;
 import java.sql.SQLException;
@@ -75,8 +78,16 @@ public class UserController {
     public String addWorksPost(HttpServletRequest request, @RequestParam("image") MultipartFile file, @RequestParam("text") String text, Principal principal)
             throws IOException, SerialException, SQLException
     {
-        byte[] bytes = file.getBytes();
-        Blob blob = new javax.sql.rowset.serial.SerialBlob(bytes);
+        InputStream inputStream = file.getInputStream();
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        Thumbnails.of(inputStream)
+                .size(1836, 1260) // Укажите желаемый размер
+                .outputFormat("jpg") // Формат сжатого изображения
+                .toOutputStream(outputStream);
+
+        byte[] compressedBytes = outputStream.toByteArray();
+
+        Blob blob = new javax.sql.rowset.serial.SerialBlob(compressedBytes);
 
         Image image = new Image();
         image.setImage(blob);
@@ -121,6 +132,8 @@ public class UserController {
         UserDetails userDetails = userDetailsService.loadUserByUsername(principal.getName());
         model.addAttribute("user", userDetails);
 
+        // Получаем имя пользователя
+        String username = principal.getName();
 
         return "user";
     }
