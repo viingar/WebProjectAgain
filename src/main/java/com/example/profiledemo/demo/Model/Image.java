@@ -5,6 +5,7 @@ import org.springframework.data.annotation.CreatedDate;
 
 import java.sql.Blob;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "image_table")

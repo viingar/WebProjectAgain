@@ -58,6 +58,13 @@
     max-width: 1100px;
     display: block;
   }
+  span.text{
+    color: #fff;
+  }
+  .logintext {
+    color: white;
+    margin: 15px 15px;
+  }
 
   .nav{
     position: fixed;
@@ -141,14 +148,18 @@
   }
   .text-center{
     font-weight: bold;
+    font-size: 25px;
+  }
+  .commentary {
+    margin: 5px 5px;
   }
 
   .photos {
     display: inline-flex;
     justify-content: flex-start;
-    margin-top: 100px;
+    margin-top: 20px;
     flex-wrap: wrap;
-    width: 100%;
+    width: 119%;
   }
 
   .photos > div {
@@ -161,6 +172,10 @@
     width: 100%; /* Занимаем 100% ширины блока, чтобы уместиться внутри блока */
     height: auto;
     padding-top: 25px;
+    margin-bottom: 15px;
+  }
+  .commentary-otstup {
+    margin-bottom: 10px;
   }
   @media only screen and (max-width: 787px){
     .nav-button{
@@ -223,7 +238,7 @@
         <li><a th:href="@{/home}"  class="link active">Главная</a></li>
         <li><a th:href="@{/works}"  class="link">Последние работы</a></li>
         <li><a th:href="@{/upload}" class="link">Загрузить</a></li>
-        <li><a href="#" class="link">About</a></li>
+        <li><a href="#" class="link">О нас</a></li>
       </ul>
     </div>
     <div class="nav-button">
@@ -233,8 +248,8 @@
       <a th:href="@{/register}">
         <button class="btn" id="registerBtn" >Регистрация</button>
       </a>
-      <button class="btn white-btn" th:if="${user != null}" th:text="${user.fullname}"></button>
-      <button class="btn white-btn" th:if="${user == null}">Не авторизован</button>
+      <span class="logintext" th:if="${user != null}" th:text="${user.fullname}"></span>
+      <span class="text" th:if="${user == null}">Не авторизован</span>
       <a th:href="@{/logout}" >
         <button sec:authorize="isAuthenticated" class="btn" id="logoutBtn" >Выйти</button>
       </a>
@@ -251,8 +266,14 @@
       <div th:each="list : ${imageList}">
         <div>
           <img class="photo" th:src="@{${'/display?id=' + list.id}}" alt="">
-          <span th:text="${list.text}"></span>
-          <span th:text="${list.uploaderFullName}"></span>
+          <div class="commentary-otstup">
+            <a>Комментарий:</a>
+          <span class="commentary" th:text="${list.text}"></span>
+          </div>
+          <div>
+          <a>Автор: </a>
+          <span class="profilename" th:text="${list.uploaderFullName}"></span>
+          </div>
         </div>
       </div>
     </div>

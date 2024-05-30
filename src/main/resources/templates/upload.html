@@ -29,7 +29,7 @@
     color: #fff;
     font-size: 30px;
     text-align: center;
-    padding: 250px 0 30px 0;
+    padding: 210px 0 30px 0;
   }
 
   .input-field {
@@ -175,7 +175,7 @@
 
   button[type="submit"] {
     margin-left: 70px;
-    margin-top: 5px;
+    margin-top: 20px;
     padding: 10px 20px;
     border: none;
     border-radius: 0;
@@ -221,6 +221,10 @@
   label {
     color: #fff;
   }
+  .logintext {
+    color: white;
+    margin: 15px 15px;
+  }
 </style>
 
 <body>
@@ -234,7 +238,7 @@
         <li><a th:href="@{/home}" class="link active">Главная</a></li>
         <li><a th:href="@{/works}" class="link">Последние работы</a></li>
         <li><a th:href="@{/upload}" class="link">Загрузить</a></li>
-        <li><a href="#" class="link">About</a></li>
+        <li><a href="#" class="link">О нас</a></li>
       </ul>
     </div>
     <div class="nav-button">
@@ -244,7 +248,7 @@
       <a th:href="@{/register}">
         <button class="btn" id="registerBtn">Регистрация</button>
       </a>
-      <button class="btn white-btn" th:if="${user != null}" th:text="${user.fullname}"></button>
+      <span class="logintext" th:if="${user != null}" th:text="${user.fullname}"></span>
       <span class="text" th:if="${user == null}">Не авторизован</span>
       <a th:href="@{/logout}">
         <button sec:authorize="isAuthenticated" class="btn" id="logoutBtn">Выйти</button>
@@ -263,7 +267,7 @@
         <div class="input-group">
           <label for="image" class="form-label">Выберите файл:</label>
           <input type="file" class="form-control mt-2" id="image" name="image" aria-describedby="inputGroupFileAddon04"
-                 aria-label="Upload" required="required">
+                 aria-label="Upload" required="required" accept="image/png, image/jpeg, image/jpg">
         </div>
         <div class="input-group mt-3">
           <label for="text">Комментарий</label>
